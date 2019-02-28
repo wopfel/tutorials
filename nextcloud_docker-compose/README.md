@@ -21,12 +21,17 @@ vim /var/lib/docker/volumes/nextcloud-docker_nextcloud/_data/data/admin/files/Te
 
 File is not visible on the Nextcloud web page
 
-Exec into the nextcloud-docker_app_1 container (maybe using portainer)
+Exec into the nextcloud-docker_app_1 container (you could also use portainer)
+- docker-compose exec app bash
 
 Exec
 - su - www-data --shell /bin/bash
-- cd /var/www/html
-- php ./occ files:scan --path="/admin/files/"
+- php /var/www/html/occ files:scan --path="/admin/files/"
+- logout
+- exit
+
+Or, all in one command:
+- docker-compose exec app /bin/su - www-data --shell /bin/bash --command 'php /var/www/html/occ files:scan --path="/admin/files/"'
 
 The file can be seen on the web page now.
 
