@@ -25,6 +25,7 @@ Exec into the nextcloud-docker_app_1 container (maybe using portainer)
 
 Exec
 - su - www-data --shell /bin/bash
+- cd /var/www/html
 - php ./occ files:scan --path="/admin/files/"
 
 The file can be seen on the web page now.
