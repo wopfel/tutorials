@@ -1,5 +1,7 @@
 # Nextcloud with docker-compose
 
+Following these steps you get a Nextcloud instance using docker-compose. 3 docker containers are running: a mariadb database, a nextcloud (fpm image), and an nginx proxy. The steps and config files are taken from the official [Nextcloud docker page on Github](https://github.com/nextcloud/docker), and slightly modified.
+
 1. `mkdir nextcloud-docker`
 
 2. `cd nextcloud-docker`

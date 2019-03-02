@@ -1,2 +1,3 @@
-# tutorials
-Tutorials (or just manuals) about different things
+# Tutorials
+
+Tutorials (or just manuals) and experiences about different things I've tried.
