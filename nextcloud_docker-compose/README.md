@@ -48,3 +48,15 @@ Or, all in one command:
 
 12. The file can be seen on the web page now.
 
+Hint: if you use this construct in an existing proxy with https, you may get an "access denied / csrf check failed" error when trying to connect with the Nextcloud iOS app. This post by Stefan Mayer-Popp (fuxx) on Github helped me: https://github.com/nextcloud/ios/issues/768#issuecomment-459670101. 
+
+You have to enforce https by modifying the config.php file (/var/lib/docker/volumes/nextcloud-docker_nextcloud/_data/config/config.php):
+
+```
+  'overwrite.cli.url' => 'https://nextcloud.example.com',
+  'overwriteprotocol' => 'https',
+```
+
+In my docker container, the url was set to http (overwrite.cli.url), and the overwriteprotocol line was missing. After changing the file and restarting the docker containers, I was able to log in in the iOS app.
+
+
