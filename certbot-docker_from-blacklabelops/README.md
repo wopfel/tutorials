@@ -70,4 +70,17 @@ cd /directory/with/docker-compose-file/
 docker run --rm -it --name certbot -v ./letsencrypt:/etc/letsencrypt -v ./letsencrypt-acme:/var/www/acme-challenge certbot/certbot certonly --webroot -w /var/www/acme-challenge/ -d my-domain.example.com --renew-by-default --email my-mail-address --agree-tos
 ```
 
+Reloading Nginx proxy:
+
+```
+docker-compose exec proxy sh
+nginx -s reload
+exit
+```
+
+Or, alternatively, reloading in one command:
+
+```
+docker-compose exec proxy sh -c "nginx -s reload"
+```
 
