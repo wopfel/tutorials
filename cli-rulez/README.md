@@ -24,3 +24,36 @@ Search files like grep, excluding .git (and other VCS dirs) automatically.
 
 Example: `ack --perl needle`
 
+
+jo
+--
+
+Create JSON output by a shell command.
+
+Example: `jo name=Jane`
+
+Prints `{"name":"Jane"}`
+
+There are much more possibilites. See [Jan-Piet Mens' site](https://jpmens.net/2016/03/05/a-shell-command-to-create-json-jo/) for a detailed description.
+
+
+Icinga
+------
+
+```
+/usr/local/share/icingaweb2/bin/icingacli monitoring list hosts --problems --verbose
+/usr/local/share/icingaweb2/bin/icingacli monitoring list services --problems --verbose
+```
+
+
+dstat
+-----
+
+Show statistics about system resources. Similar to vmstat and iostat. Includes network throughput.
+
+![ScreenShot](images/dstat-sample.png)
+
+Category: performance
+
+
+
