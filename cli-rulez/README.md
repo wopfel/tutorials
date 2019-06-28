@@ -64,3 +64,11 @@ Benchmark testing. Disk throughput.
 Example: `fio --rw=readwrite --name=test --size=200M --bs=4M --numjobs=2 --group_reporting --runtime=20 --time_based --refill_buffers`
 
 
+bc
+--
+
+Calculator.
+
+Example: `echo "scale=1000; 4*a(1)" | bc -l`
+Calculates 1000 digits for Pi.
+
