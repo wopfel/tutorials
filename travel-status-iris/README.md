@@ -25,10 +25,18 @@ perl Build.PL
 ./Build install
 ```
 
+Set locale:
+
+```
+dpkg-reconfigure locales
+# Add de_DE.UTF-8
+# and set is as "default locale for the system environment"
+```
+
 Try db-iris:
 
 ```
 db-iris -od,q 'Dortmund Hbf'
-db-iris -od,q 'Nuernberg Hbf'
+db-iris -od,q 'Nürnberg Hbf'
 ```
 
