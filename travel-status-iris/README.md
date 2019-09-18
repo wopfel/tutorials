@@ -19,6 +19,8 @@ apt install liblwp-protocol-https-perl libtext-levenshteinxs-perl libxml-libxml-
 Build db-iris (steps from @derf's Github page):
 
 ```
+git clone https://github.com/derf/Travel-Status-DE-IRIS.git
+cd Travel-Status-DE-IRIS/
 perl Build.PL
 ./Build
 ./Build manifest
