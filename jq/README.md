@@ -8,6 +8,7 @@ jq examples
   "points": [
     {
       "id": "123",
+      "title": "One",
       "data1": "",
       "data2": "",
       "outlets": [
@@ -25,6 +26,7 @@ jq examples
     },
     {
       "id": "456",
+      "title": "Two",
       "data1": "",
       "data2": "",
       "outlets": [
