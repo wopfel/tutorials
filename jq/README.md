@@ -1,6 +1,7 @@
 jq examples
 ===========
 
+See the great jq tool at https://github.com/stedolan/jq.
 
 ```json
 
@@ -47,10 +48,11 @@ jq examples
 
 ```
 
+The title field is written only once. Outlets is an array:
+
 ```
 # jq '.points[] | select(.id == "456") | { title: .title , outlets: .outlets }' < sample-001.json
 
-Title is output only once. Outlets is an array:
 {
   "title": "Two",
   "outlets": [
@@ -68,7 +70,7 @@ Title is output only once. Outlets is an array:
 }
 ```
 
-Title is repeated for every object:
+Title is repeated for every object. No array at all:
 
 ```
 # jq '.points[] | select(.id == "456") | { title: .title , outlets: .outlets[] }' < sample-001.json
