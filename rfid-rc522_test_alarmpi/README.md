@@ -13,6 +13,15 @@ My environment:
 
 Cabling: see the related web site.
 
+Specific to Arch Linux:
+
+```
+pacman -S python-pip
+pip install RPi.GPIO
+```
+
+Clone git repositories, install SPI-Py and switch to python 3 branch:
+
 ```
 git clone https://github.com/lthiery/SPI-Py.git
 cd SPI-Py
