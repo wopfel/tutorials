@@ -3,7 +3,7 @@ Testing a RFID-RC522 board on a Raspberry Pi 3 B+
 
 Note: Most of this writing is based on https://tutorials-raspberrypi.de/raspberry-pi-rfid-rc522-tueroeffner-nfc/.
 
-The previous mentioned blog post lacks Python 3 functionality (`SyntaxError: Missing parentheses in call to 'print'. Did you mean print("Ctrl+C captured, ending read.")?`) and is incompatible with the MFRC522-python project (`TypeError: function takes exactly 2 arguments (1 given)`.
+The previous mentioned blog post is a bit older and therefore lacks Python 3 functionality (`SyntaxError: Missing parentheses in call to 'print'. Did you mean print("Ctrl+C captured, ending read.")?`) and is incompatible with the MFRC522-python project (`TypeError: function takes exactly 2 arguments (1 given)`.
 
 My environment:
 - Raspberry Pi 3 Model B+
@@ -35,3 +35,9 @@ cd MFRC522-python
 git checkout python3-spi-updates
 python Read.py
 ```
+
+Thanks
+======
+
+Thanks to to the original blog poster, all commenters there and owners of the involved github repositories!
+
