@@ -13,6 +13,9 @@ My environment:
 
 Cabling: see the related web site.
 
+![Cables on the RC522 board](images/rc522-cabling.png)
+![Cables on the Raspberry Pi board](images/rpi-cabling.png)
+
 Specific to Arch Linux:
 
 ```
