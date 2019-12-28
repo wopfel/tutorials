@@ -72,3 +72,13 @@ Calculator.
 Example: `echo "scale=1000; 4*a(1)" | bc -l`
 Calculates 1000 digits for Pi.
 
+
+comm
+----
+
+Compare two text files and shows lines only in file1 (1st column), only in file2 (2nd column), and lines in both files (3rd column).
+
+Example: `comm file1.txt file2.txt`
+
+Find common lines in both files: `comm -12 <(sort file1.txt) <(sort file2.txt)`
+
