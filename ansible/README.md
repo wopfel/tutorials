@@ -33,3 +33,30 @@ Run a task only if a file is present (or not present likewise)
   when: stat_result.stat.isreg == True
 ```
 
+Running more tasks depending on a condition: block
+
+```
+- name: Block section
+  block:
+    - name: First task
+      ansible_task_or_someting: ...
+    - name: Second task
+      ansible_task_or_someting: ...
+  when: ... condition ...
+```
+
+Delete multiple files, specified by a file glob pattern
+
+```
+- name: Find all files by glob pattern
+  find:
+    paths: /path/to/files
+    patterns: "*.bkp"
+  register: file_list
+- name: Remove matched files
+  file:
+    path: "{{ item['path'] }}"
+    state: absent
+  with_items: "{{ file_list['files'] }}"
+```
+
