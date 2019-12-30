@@ -82,3 +82,11 @@ Example: `comm file1.txt file2.txt`
 
 Find common lines in both files: `comm -12 <(sort file1.txt) <(sort file2.txt)`
 
+
+cdrecord
+--------
+
+Write an ISO image to a CD.
+
+Example: `cdrecord dev=/dev/sr1 speed=12 -dao -eject -v Downloads/clonezilla-live-2.6.4-10-amd64.iso`
+
