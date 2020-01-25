@@ -90,3 +90,22 @@ Write an ISO image to a CD.
 
 Example: `cdrecord dev=/dev/sr1 speed=12 -dao -eject -v Downloads/clonezilla-live-2.6.4-10-amd64.iso`
 
+
+ts
+--
+
+Timestamp each line. Very useful in a pipe. Package moreutils on Arch Linux. @climagic on Twitter added a `stdbuf -o0 uniq |` before the ts command to only show the line when it has changed (different to previous output line from ps).
+
+Example: `while ps auxw | grep '[d]dclient' ; do sleep 5 ; done | ts`
+
+Example output:
+
+```
+Jan 24 16:23:44 root         336  0.0  3.6  21684 13632 ?        S    14:33   0:00 ddclient - sleeping for 20 seconds
+Jan 24 16:23:49 root         336  0.0  3.6  21684 13632 ?        S    14:33   0:00 ddclient - sleeping for 10 seconds
+Jan 24 16:23:54 root         336  0.0  3.6  21684 13632 ?        S    14:33   0:00 ddclient - sleeping for 10 seconds
+Jan 24 16:23:59 root         336  0.0  3.6  21684 13632 ?        S    14:33   0:00 ddclient - sleeping for 300 seconds
+Jan 24 16:24:04 root         336  0.0  3.6  21684 13632 ?        S    14:33   0:00 ddclient - sleeping for 300 seconds
+Jan 24 16:24:09 root         336  0.0  3.6  21684 13632 ?        S    14:33   0:00 ddclient - sleeping for 290 seconds
+```
+
