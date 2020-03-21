@@ -109,3 +109,19 @@ Jan 24 16:24:04 root         336  0.0  3.6  21684 13632 ?        S    14:33   0:
 Jan 24 16:24:09 root         336  0.0  3.6  21684 13632 ?        S    14:33   0:00 ddclient - sleeping for 290 seconds
 ```
 
+
+progress
+--------
+
+Shows the progress of different commands. Can be started when dd is already running. Detects dd, rsync, and many other programs.
+
+Example output of `progess --monitor`:
+
+```
+[ 2013] dd /dev/dm-13
+        8.5% (5.1 GiB / 60 GiB) 8.0 MiB/s remaining 1:57:12
+
+[ 2017] dd /dev/dm-12
+        96.6% (4.8 GiB / 5 GiB) 8.0 MiB/s remaining 0:00:21
+```
+
