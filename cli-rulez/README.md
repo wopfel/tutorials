@@ -125,3 +125,15 @@ Example output of `progess --monitor`:
         96.6% (4.8 GiB / 5 GiB) 8.0 MiB/s remaining 0:00:21
 ```
 
+
+pv
+--
+
+Pipe viewer. Shows the progress of data through a pipeline.
+
+`dd if=... | pv | dd of=...`
+
+(`dd` is just an example, you may also use `dd ... status=progress` in newer dd versions)
+
+You can specify a rate limit using `--rate-limit`. The rate limit can be changed using `pv -R $(pidof pv) -L 102400` (seen in the borg documenation).
+
