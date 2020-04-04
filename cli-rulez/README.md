@@ -109,6 +109,36 @@ Jan 24 16:24:04 root         336  0.0  3.6  21684 13632 ?        S    14:33   0:
 Jan 24 16:24:09 root         336  0.0  3.6  21684 13632 ?        S    14:33   0:00 ddclient - sleeping for 290 seconds
 ```
 
+Also useful with `ping` to see the time the answer was received. Example (destination was rebooted during ping):
+
+```
+# ping server | ts
+Apr 04 19:33:57 PING server (192.x.x.x) 56(84) bytes of data.
+Apr 04 19:33:57 64 bytes from server (192.x.x.x): icmp_seq=1 ttl=64 time=0.371 ms
+Apr 04 19:33:58 64 bytes from server (192.x.x.x): icmp_seq=2 ttl=64 time=0.160 ms
+Apr 04 19:33:59 64 bytes from server (192.x.x.x): icmp_seq=3 ttl=64 time=0.144 ms
+Apr 04 19:34:23 64 bytes from server (192.x.x.x): icmp_seq=27 ttl=64 time=0.105 ms
+Apr 04 19:34:24 64 bytes from server (192.x.x.x): icmp_seq=28 ttl=64 time=0.130 ms
+Apr 04 19:34:26 64 bytes from server (192.x.x.x): icmp_seq=29 ttl=64 time=0.599 ms
+```
+
+I've had a look at the `man ping` page, and I just realized the `-D` parameter. So you can omit `ts` and just use `ping -D`:
+
+```
+# ping -D -O server
+[1586021966.217813] 64 bytes from server (192.x.x.x): icmp_seq=1 ttl=64 time=0.165 ms
+[1586021967.214993] 64 bytes from server (192.x.x.x): icmp_seq=2 ttl=64 time=0.179 ms
+[1586021968.221549] 64 bytes from server (192.x.x.x): icmp_seq=3 ttl=64 time=0.146 ms
+[1586021969.248159] 64 bytes from server (192.x.x.x): icmp_seq=4 ttl=64 time=0.337 ms
+[1586021970.265523] 64 bytes from server (192.x.x.x): icmp_seq=5 ttl=64 time=0.116 ms
+[1586021972.313402] no answer yet for icmp_seq=6
+[1586021973.341370] no answer yet for icmp_seq=7
+[1586021974.361367] no answer yet for icmp_seq=8
+...
+[1586021987.633862] 64 bytes from server (192.x.x.x): icmp_seq=21 ttl=64 time=978 ms
+[1586021987.653106] 64 bytes from server (192.x.x.x): icmp_seq=22 ttl=64 time=0.133 ms
+```
+
 
 progress
 --------
@@ -136,4 +166,16 @@ Pipe viewer. Shows the progress of data through a pipeline.
 (`dd` is just an example, you may also use `dd ... status=progress` in newer dd versions)
 
 You can specify a rate limit using `--rate-limit`. The rate limit can be changed using `pv -R $(pidof pv) -L 102400` (seen in the borg documenation).
+
+
+pee
+---
+
+In a pipe, forward the input to several processes.
+
+`seq 5 -1 1 | pee 'sort > sorted' 'sort -R > shuffled'`
+
+The file `sorted` has 5 lines, having the numbers 1 to 5 sorted ascending. The file `shuffled` has also 5 lines, but with random order.
+
+`/usr/bin/pee` is in Pacman package `moreutils`.
 
