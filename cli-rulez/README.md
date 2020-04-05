@@ -179,3 +179,21 @@ The file `sorted` has 5 lines, having the numbers 1 to 5 sorted ascending. The f
 
 `/usr/bin/pee` is in Pacman package `moreutils`.
 
+
+inotifywait
+-----------
+
+In monitoring mode (`-m`), prints a line every time a file is accessed.
+
+Example: `inotifywait -m /tree/to/index.php`
+
+Everytime you `cat` that file, the output is something like
+
+```
+/tree/to/index.php OPEN
+/tree/to/index.php ACCESS
+/tree/to/index.php CLOSE_NOWRITE,CLOSE
+```
+
+`/usr/bin/inotifywait` is in Pacman package `inotify-tools`.
+
