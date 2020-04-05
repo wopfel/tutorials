@@ -199,3 +199,19 @@ Everytime you `cat` that file, the output is something like
 
 `/usr/bin/inotifywait` is in Pacman package `inotify-tools`.
 
+
+lsof
+----
+
+Show open files, or ports.
+
+Example: Which SSH connections are active?
+
+```
+# lsof -i tcp:22
+COMMAND    PID USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+sshd      5282 root    3u  IPv4  20610      0t0  TCP *:ssh (LISTEN)
+sshd      5282 root    4u  IPv6  20612      0t0  TCP *:ssh (LISTEN)
+sshd    132409 root    4u  IPv4 544552      0t0  TCP server:ssh->client:45766 (ESTABLISHED)
+```
+
