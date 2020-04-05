@@ -179,6 +179,8 @@ The file `sorted` has 5 lines, having the numbers 1 to 5 sorted ascending. The f
 
 `/usr/bin/pee` is in Pacman package `moreutils`.
 
+Using bash, the above example can be rewritten without using pee: `seq 5 -1 1 | tee >(sort > sorted) >(sort -R > shuffled)`
+
 
 inotifywait
 -----------
