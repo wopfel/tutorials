@@ -215,3 +215,12 @@ sshd      5282 root    4u  IPv6  20612      0t0  TCP *:ssh (LISTEN)
 sshd    132409 root    4u  IPv4 544552      0t0  TCP server:ssh->client:45766 (ESTABLISHED)
 ```
 
+
+cpulimit
+--------
+
+Limit a process' maximum cpu usage.
+
+`cpulimit --limit=60 ffmpeg ...`
+
+
