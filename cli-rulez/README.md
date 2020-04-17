@@ -224,3 +224,14 @@ Limit a process' maximum cpu usage.
 `cpulimit --limit=60 ffmpeg ...`
 
 
+paste
+-----
+
+Join multiple lines by "," for example.
+
+Examples:
+
+- `echo -e 'a\nb\nc\nd' | paste -sd,` gives `a,b,c,d`
+
+- `ansible 'hostgroup' -m ping | grep SUCCESS | sed 's/ | SUCCESS.*//' | paste -sd ,` gives a list like `host1,host4,host5`
+
