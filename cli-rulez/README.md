@@ -245,3 +245,11 @@ Similar tool to the famous `cat` command. Pastes a file. Additionally, it output
 
 ![ScreenShot of bat](images/bat-sample.png)
 
+
+jq
+--
+
+A JSON processor. See also ["some jq examples"](../jq/).
+
+Example: `echo '{"foo": 0}' | jq .`
+
