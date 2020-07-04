@@ -239,7 +239,7 @@ Examples:
 bat
 ---
 
-Similar tool to clone. Pastes a file. Additionally, it outputs line numbers and does syntax coloring.
+Similar tool to the famous `cat` command. Pastes a file. Additionally, it outputs line numbers and does syntax coloring.
 
 `bat FILENAME`
 
