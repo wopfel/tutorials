@@ -257,3 +257,13 @@ Another example combining jo and jq: `jo time=$(date +%s) dir=$HOME | jq ".time"
 
 Output: `1593859953`
 
+
+curl + wttr
+-----------
+
+Show weather information.
+
+Default is based on your location. Based on your IP address, I guess.
+
+`curl wttr.in`
+
