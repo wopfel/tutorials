@@ -235,3 +235,13 @@ Examples:
 
 - `ansible 'hostgroup' -m ping | grep SUCCESS | sed 's/ | SUCCESS.*//' | paste -sd ,` gives a list like `host1,host4,host5`
 
+
+bat
+---
+
+Similar tool to clone. Pastes a file. Additionally, it outputs line numbers and does syntax coloring.
+
+`bat FILENAME`
+
+![ScreenShot of bat](images/bat-sample.png)
+
