@@ -253,3 +253,7 @@ A JSON processor. See also ["some jq examples"](../jq/).
 
 Example: `echo '{"foo": 0}' | jq .`
 
+Another example combining jo and jq: `jo time=$(date +%s) dir=$HOME | jq ".time"`
+
+Output: `1593859953`
+
