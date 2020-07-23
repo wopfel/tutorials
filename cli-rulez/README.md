@@ -295,3 +295,9 @@ Seq     Host    Starttime       JobRuntime      Send    Receive Exitval Signal  
 8       :       1595532466.269       1.006      0       0       1       0       sleep 1; exit 1
 9       :       1595532467.378       1.007      0       0       1       0       sleep 1; exit 1
 ```
+
+
+expand
+------
+
+Replace tab stops by spaces. Similar command: `unexpand`.
