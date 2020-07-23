@@ -267,3 +267,31 @@ Default is based on your location. Based on your IP address, I guess.
 
 `curl wttr.in`
 
+
+sem and parallel
+----------------
+
+Run jobs parallel and limit the number of parallel jobs.
+
+Example: run `sem -j 2 sleep 90 &` multiple times.
+
+Only 2 sleep processes are running at the same time. As one sleep ends, another sleep will be started until all jobs are done.
+
+There's a tutorial avaiable: https://www.gnu.org/software/parallel/parallel_tutorial.html
+
+
+Another example running multiple sleep processes and exit codes. At the end, there's a nice chart:
+
+```
+% parallel --joblog /tmp/log 'sleep {}; exit {}'  ::: 1 2 3 0 0 0 1 1 1  ;  cat /tmp/log
+Seq	Host	Starttime	JobRuntime	Send	Receive	Exitval	Signal	Command
+1	:	1595532458.408	     1.003	0	0	1	0	sleep 1; exit 1
+2	:	1595532459.470	     2.006	0	0	2	0	sleep 2; exit 2
+3	:	1595532461.617	     3.006	0	0	3	0	sleep 3; exit 3
+4	:	1595532464.864	     0.006	0	0	0	0	sleep 0; exit 0
+5	:	1595532465.017	     0.006	0	0	0	0	sleep 0; exit 0
+6	:	1595532465.114	     0.006	0	0	0	0	sleep 0; exit 0
+7	:	1595532465.177	     1.006	0	0	1	0	sleep 1; exit 1
+8	:	1595532466.269	     1.006	0	0	1	0	sleep 1; exit 1
+9	:	1595532467.378	     1.007	0	0	1	0	sleep 1; exit 1
+```
