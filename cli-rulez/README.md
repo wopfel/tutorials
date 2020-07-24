@@ -320,3 +320,38 @@ Example:
 % echo "reverse this string" | rev
 gnirts siht esrever
 ```
+
+
+factor
+------
+
+Print the prime factors of numbers.
+
+Example:
+
+```
+% factor 17 18 19
+17: 17
+18: 2 3 3
+19: 19
+```
+
+
+figlet
+------
+
+Print a banner, using big letters in the console.
+
+Example: `figlet Test`
+
+A different font can be specified using `-f`.
+
+Print the current kernel revision using all fonts avaiable:
+
+`for f in /usr/share/figlet/fonts/*.flf ; do font=$( basename -s .flf $f ) ; echo $font ; uname -r | figlet -kf $font ; done`
+
+The list can also be generated using `for font in $( figlist ) ; do ...`, but some error messages about opening font files may appear.
+
+Similar commands: toilet, banner.
+
+You may also search for "figlet Hello" on DuckDuckGo and you'll get your banner. There are also online generators avaiable.
