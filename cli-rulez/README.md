@@ -355,3 +355,18 @@ The list can also be generated using `for font in $( figlist ) ; do ...`, but so
 Similar commands: toilet, banner.
 
 You may also search for "figlet Hello" on DuckDuckGo and you'll get your banner. There are also online generators avaiable.
+
+
+repeat
+------
+
+Repeat a shell command a given number of times.
+
+Example:
+
+```
+% repeat 5 sh -c 'echo -n "$(date): " ; ping -c 1 -q localhost | tail -n 1 ; sleep 5'
+Fr 24. Jul 14:57:01 CEST 2020: rtt min/avg/max/mdev = 0.033/0.033/0.033/0.000 ms
+Fr 24. Jul 14:57:06 CEST 2020: rtt min/avg/max/mdev = 0.024/0.024/0.024/0.000 ms
+...
+```
