@@ -301,3 +301,22 @@ expand
 ------
 
 Replace tab stops by spaces. Similar command: `unexpand`.
+
+
+neofetch
+--------
+
+Show OS logo, current kernel, uptime, etc. information.
+
+
+rev
+---
+
+Reverse a text or file.
+
+Example:
+
+```
+% echo "reverse this string" | rev
+gnirts siht esrever
+```
