@@ -18,3 +18,14 @@ file1  file2  file3
 ./sample-command --pre file1 --post1 --post2 --pre file2 --post1 --post2 --pre file3 --post1 --post2
 ```
 
+Pipe alias
+----------
+
+Sometimes you can't insert the pipe symbol. Wrong keyboard, wrong keyboard layout, or something else.
+
+```
+# alias -g PIPE='|'
+# find . PIPE wc -l
+```
+
+Of course you have to re-call the command from history, or set it by default ;-)
