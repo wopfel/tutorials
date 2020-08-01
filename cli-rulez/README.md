@@ -34,7 +34,7 @@ Example: `jo name=Jane`
 
 Prints `{"name":"Jane"}`
 
-There are much more possibilites. See [Jan-Piet Mens' site](https://jpmens.net/2016/03/05/a-shell-command-to-create-json-jo/) for a detailed description.
+There are much more possibilities. See [Jan-Piet Mens' site](https://jpmens.net/2016/03/05/a-shell-command-to-create-json-jo/) for a detailed description.
 
 
 Icinga
