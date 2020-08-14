@@ -390,3 +390,8 @@ a line longer than a
 a line longer than
 a few characters
 ```
+
+Another example: generate lines with random 7-digit numbers
+
+`< /dev/urandom tr -dc '0-9' | fold -w 7`
+
