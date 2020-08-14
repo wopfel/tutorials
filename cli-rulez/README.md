@@ -370,3 +370,23 @@ Fr 24. Jul 14:57:01 CEST 2020: rtt min/avg/max/mdev = 0.033/0.033/0.033/0.000 ms
 Fr 24. Jul 14:57:06 CEST 2020: rtt min/avg/max/mdev = 0.024/0.024/0.024/0.000 ms
 ...
 ```
+
+
+fold
+----
+
+Wrap input lines to fit in specified width.
+
+Example:
+
+```
+% echo a line longer than a few characters | fold --width 21
+a line longer than a
+few characters
+% echo a line longer than a few characters | fold --width 20
+a line longer than a
+ few characters
+% echo a line longer than a few characters | fold --width 20 -s
+a line longer than
+a few characters
+```
