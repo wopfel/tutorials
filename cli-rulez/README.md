@@ -410,3 +410,13 @@ lolcat
 Output text in very nice rainbow colors.
 
 Example: `( echo "Kernel:" ; uname -r ) | figlet -tkf banner | lolcat` 
+
+
+xargs
+-----
+
+Runs a command with arguments taken from standard input. Useful if your argument count exceeds the shell limit. Mostly run as `/cmd/that/generates/argument/list | xargs /cmd/that/processes/argument/list`.
+
+(Weird) example: run 5 sleep commands in parallel forever
+
+`yes 2 | xargs -P5 -n1 sleep`
