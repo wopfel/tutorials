@@ -403,3 +403,10 @@ Another example: generate lines with random 7-digit numbers
 
 `< /dev/urandom tr -dc '0-9' | fold -w 7`
 
+
+lolcat
+------
+
+Output text in very nice rainbow colors.
+
+Example: `( echo "Kernel:" ; uname -r ) | figlet -tkf banner | lolcat` 
