@@ -268,6 +268,14 @@ Default is based on your location. Based on your IP address, I guess.
 `curl wttr.in`
 
 
+curl + qr code
+--------------
+
+Generate a qr code using https://qrenco.de.
+
+Example: `printf "sample text" | curl -F-=\<- qrenco.de`
+
+
 sem and parallel
 ----------------
 
