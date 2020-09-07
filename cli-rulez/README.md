@@ -420,3 +420,18 @@ Runs a command with arguments taken from standard input. Useful if your argument
 (Weird) example: run 5 sleep commands in parallel forever
 
 `yes 2 | xargs -P5 -n1 sleep`
+
+
+tput colors
+-----------
+
+Example: Print red, yellow, and green with colors
+
+```
+% GREEN=$( tput setaf 2 )
+% YELLOW=$( tput setaf 3 )
+% RED=$( tput setaf 1 )
+% RESETCOLOR=$( tput sgr0 )
+% echo $RED red $YELLOW yellow $GREEN green $RESETCOLOR default
+ red  yellow  green  default
+```
