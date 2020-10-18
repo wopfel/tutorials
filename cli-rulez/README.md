@@ -435,3 +435,12 @@ Example: Print red, yellow, and green with colors
 % echo $RED red $YELLOW yellow $GREEN green $RESETCOLOR default
  red  yellow  green  default
 ```
+
+
+VBoxManage
+----------
+
+Save the screenshot of a VM into a file.
+
+`VBoxManage controlvm VMNAME screenshotpng Desktop/vmscreenshot.png`
+
