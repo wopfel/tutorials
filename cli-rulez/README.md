@@ -122,6 +122,20 @@ Apr 04 19:34:24 64 bytes from server (192.x.x.x): icmp_seq=28 ttl=64 time=0.130 
 Apr 04 19:34:26 64 bytes from server (192.x.x.x): icmp_seq=29 ttl=64 time=0.599 ms
 ```
 
+It's also possible to show the ping "misses" using `-O`. In the following example only changes are printed. `sed` is used to eliminate time (below 10 ms) and sequence id, so `uniq` can do its job:
+
+```
+# ping -O 192.168.125.2 | stdbuf -o0 sed -E -e 's/icmp_seq=[0-9]+//' -e 's/time=[0-9]\... ms//' | stdbuf -o0 uniq | ts
+Feb 14 11:37:56 PING 192.168.125.2 (192.168.125.2) 56(84) bytes of data.
+Feb 14 11:37:56 64 bytes from 192.168.125.2:  ttl=64
+Feb 14 11:38:09 no answer yet for
+Feb 14 11:38:24 64 bytes from 192.168.125.2:  ttl=64 time=10.5 ms
+Feb 14 11:38:25 64 bytes from 192.168.125.2:  ttl=64
+Feb 14 11:38:43 64 bytes from 192.168.125.2:  ttl=64 time=10.3 ms
+Feb 14 11:38:44 64 bytes from 192.168.125.2:  ttl=64
+^C
+```
+
 I've had a look at the `man ping` page, and I just realized the `-D` parameter. So you can omit `ts` and just use `ping -D`:
 
 ```
@@ -409,7 +423,7 @@ lolcat
 
 Output text in very nice rainbow colors.
 
-Example: `( echo "Kernel:" ; uname -r ) | figlet -tkf banner | lolcat` 
+Example: `( echo "Kernel:" ; uname -r ) | figlet -tkf banner | lolcat`
 
 
 xargs
@@ -443,4 +457,3 @@ VBoxManage
 Save the screenshot of a VM into a file.
 
 `VBoxManage controlvm VMNAME screenshotpng Desktop/vmscreenshot.png`
-
