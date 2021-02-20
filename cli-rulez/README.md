@@ -457,3 +457,27 @@ VBoxManage
 Save the screenshot of a VM into a file.
 
 `VBoxManage controlvm VMNAME screenshotpng Desktop/vmscreenshot.png`
+
+
+rename
+------
+
+Rename files.
+
+Example: `rename --no-overwrite .htm .html *.htm`
+
+Another example (`-n` is no changes):
+
+```
+% rename -n -v .md .markdown *.md
+`README.md' -> `README.markdown'
+`zsh.md' -> `zsh.markdown'
+```
+
+There's a program named `perl-rename`, which supports regular expressions:
+
+```
+% perl-rename -n -v 's/-(s.m)/_$1/' *.png
+bat-sample.png -> bat_sample.png
+dstat-sample.png -> dstat_sample.png
+```
