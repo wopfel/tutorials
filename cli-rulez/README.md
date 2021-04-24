@@ -56,6 +56,46 @@ Show statistics about system resources. Similar to vmstat and iostat. Includes n
 Category: performance
 
 
+iostat
+------
+
+Report IO statistics.
+
+Sample output for `iostat 2`, reporting the device stats every 2 seconds:
+
+```
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           1,83    0,02    1,81    0,18    0,41   95,75
+
+Device             tps    kB_read/s    kB_wrtn/s    kB_dscd/s    kB_read    kB_wrtn    kB_dscd
+sda               8,37        44,32        47,11         0,00   49502674   52619296          0
+sdb               0,03         0,22         0,03         0,00     241305      37956          0
+```
+
+
+pidstat
+-------
+
+Report statistics, similar to top, but in batch mode.
+
+```
+19:41:06      UID       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
+19:41:06        0         1    0,04    0,03    0,00    0,08    0,07     0  systemd
+19:41:06        0         2    0,00    0,00    0,00    0,00    0,00     0  kthreadd
+19:41:06        0        12    0,00    0,01    0,00    0,01    0,01     0  ksoftirqd/0
+```
+
+Example: `pidstat -d -G dd 2`, throughput for `dd` command.
+
+```
+19:48:41      UID       PID   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
+19:48:43        0   1213678 129129,41      0,00      0,00     177  dd
+
+19:48:43      UID       PID   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
+19:48:45        0   1213678 103015,38      0,00      0,00     188  dd
+```
+
+
 fio
 ---
 
