@@ -521,3 +521,36 @@ There's a program named `perl-rename`, which supports regular expressions:
 bat-sample.png -> bat_sample.png
 dstat-sample.png -> dstat_sample.png
 ```
+
+
+whatis
+------
+
+Show command information.
+
+```
+% whatis ls
+ls (1p)              - list directory contents
+ls (1)               - list directory contents
+```
+
+
+nl
+--
+
+Number lines.
+
+```
+% echo -e 'One\nTwo\nThree lines' | nl
+     1	One
+     2	Two
+     3	Three lines
+```
+
+
+apropos
+-------
+
+Search for man pages.
+
+Example: `apropos ethernet`
