@@ -554,3 +554,24 @@ apropos
 Search for man pages.
 
 Example: `apropos ethernet`
+
+
+whereis / which
+---------------
+
+Look for an installed program.
+
+Example:
+
+```
+% which ping
+/usr/bin/ping
+% whereis ping
+ping: /usr/bin/ping /usr/share/man/man8/ping.8.gz
+```
+
+
+pstree
+------
+
+Show tree of processes.
