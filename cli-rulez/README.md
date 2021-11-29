@@ -43,7 +43,20 @@ Icinga
 ```
 /usr/local/share/icingaweb2/bin/icingacli monitoring list hosts --problems --verbose
 /usr/local/share/icingaweb2/bin/icingacli monitoring list services --problems --verbose
+
+/usr/sbin/icinga2 object list --type notification
 ```
+
+API:
+
+```
+curl -k -u "user:password" "https://localhost:5665/v1"
+curl -k https://user:password@localhost:5665/v1/objects/notifications | jq
+curl -k -u "user:password" "https://localhost:5665/v1/objects/hosts?filter=match(%22icinga*%22,host.name)" | jq
+curl -s -k -u "user:password" "https://localhost:5665/v1/objects/services?filter=service.state!=ServiceOK" | jq '{name: .results[].name, output: .results[].attrs.last_check_result.output, state: .results[].attrs.state}'
+```
+
+Have also a look at [filters in the official documentation](https://icinga.com/docs/icinga-2/latest/doc/12-icinga2-api/#filters).
 
 
 dstat
