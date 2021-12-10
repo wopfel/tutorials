@@ -588,3 +588,9 @@ pstree
 ------
 
 Show tree of processes.
+
+
+hexdump / xxd
+-------------
+
+Print hexdump of a file.
