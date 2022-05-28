@@ -38,3 +38,10 @@ systemctl list-timers --all
 journalctl -u certbot-renewal.service
 systemctl status certbot-renewal.timer
 ```
+
+The tiimer looks like this:
+
+```
+NEXT                         LEFT          LAST                         PASSED  UNIT                         ACTIVATES
+Sun 2022-05-29 09:41:56 CEST 15h left      n/a                          n/a     certbot-renewal.timer        certbot-renewal.service
+```
