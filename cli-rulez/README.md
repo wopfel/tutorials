@@ -594,3 +594,13 @@ hexdump / xxd
 -------------
 
 Print hexdump of a file.
+
+
+setterm (dump output of tty)
+----------------------------
+
+Print all visible text of a tty to a text file.
+
+Example for tty1:
+
+`setterm --dump 1 --file`
