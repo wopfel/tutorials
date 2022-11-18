@@ -604,3 +604,17 @@ Print all visible text of a tty to a text file.
 Example for tty1:
 
 `setterm --dump 1 --file`
+
+
+shuf
+----
+
+Shuffe text lines of given file. Can also be used as a number generator.
+
+Example 1: `shuf INPUTFILE`
+
+Example 2: `shuf -i 17-101 -n 2` (print 2 output lines, each having a number from 17 to 101, (both including))
+
+Can be used as a random sleep in bash:
+`sleep $(( 3600 + $(shuf -i 700-1000 -n 1) ))`
+(Sleep a random amount of time between 4300 and 4600 seconds)
