@@ -618,3 +618,51 @@ Example 2: `shuf -i 17-101 -n 2` (print 2 output lines, each having a number fro
 Can be used as a random sleep in bash:
 `sleep $(( 3600 + $(shuf -i 700-1000 -n 1) ))`
 (Sleep a random amount of time between 4300 and 4600 seconds)
+
+
+xq
+--
+
+Command-line XML and HTML beautifier and content extractor.
+Project page: https://github.com/sibprogrammer/xq
+
+Example:
+
+```
+# curl -s https://about.gitlab.com/security-releases.xml | xq -x //title | tail -n 2
+GitLab Major Security Update for CVE-2016-9086
+GitLab Major Security Update for CVE-2016-4340
+```
+
+
+hurl
+----
+
+Runs HTTP requests. It's also an HTTP test tool.
+
+Project page: https://hurl.dev/
+
+Sample test file:
+
+```
+# cat hurltest.hurl
+GET https://google.de/
+
+HTTP/2 301
+[Asserts]
+duration < 100  # Duration in ms
+header "Location" contains "https://www.google.de/"
+```
+
+Example run:
+
+```
+# hurl hurltest.hurl
+error: Assert failure
+  --> hurltest.hurl:5:0
+   |
+ 5 | duration < 100  # Duration in ms
+   |   actual:   int <102>
+   |   expected: less than int <100>
+   |
+```
