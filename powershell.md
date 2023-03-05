@@ -30,6 +30,25 @@ Write all streams to a log file.
 Generate matrix list
 --------------------
 
-`1..10 | % { "server-a-{0:d2}" -f $_, "server-b-{0:d2}" -f $_ }`
+A matrix for
+- 1, 2, 3, 17
+- a, b
 
-#TODO: Check if it works that way, add output example
+`1..3+17 | % { ("server-a-{0:d2}" -f $_), ("server-b-{0:d2}" -f $_) }`
+
+Results in:
+
+```
+server-a-01
+server-b-01
+server-a-02
+server-b-02
+server-a-03
+server-b-03
+server-a-17
+server-b-17
+```
+
+The inner part can also be rewritten as loop:
+
+`1..3+17 | % { $nr = $_ ; "a","b" | % { "server-{0}-{1:d2}" -f $_,$nr } }`
