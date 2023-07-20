@@ -620,6 +620,16 @@ Can be used as a random sleep in bash:
 (Sleep a random amount of time between 4300 and 4600 seconds)
 
 
+tmux
+----
+
+Save (display) buffer to a file.
+
+Ctrl+B+:, `capture-pane -S -3000`, Enter, Ctrl+B+:, `save-buffer tmux-output.txt`, Return
+or
+`tmux capture-pane -pS -1000000 > tmux-output.txt`
+
+
 xq
 --
 
