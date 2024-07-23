@@ -91,3 +91,14 @@ Title is repeated for every object. No array at all:
   }
 }
 ```
+
+
+Get download url of latest restic release
+-----------------------------------------
+
+```
+# curl -s 'https://api.github.com/repos/restic/restic/releases/latest' | jq -r '.assets[] | select(.name | match("^restic_.*_linux_amd64\\.bz2$")) | .browser_download_url'
+https://github.com/restic/restic/releases/download/v0.16.5/restic_0.16.5_linux_amd64.bz2
+
+# curl -s 'https://api.github.com/repos/restic/restic/releases/latest' | jq -r '.assets[] | select(.name | contains("linux_amd64")) | .browser_download_url'
+https://github.com/restic/restic/releases/download/v0.16.5/restic_0.16.5_linux_amd64.bz2
