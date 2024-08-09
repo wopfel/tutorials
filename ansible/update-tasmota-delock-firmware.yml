@@ -121,6 +121,6 @@
 
         - assert:
             that:
-              - 'jsonout_afterupdate.json.StatusFWR.Version == afterupdate_version'
+              - 'jsonout_afterupdate.json.StatusFWR.Version == afterupdate_version  or  jsonout_afterupdate.json.StatusFWR.Version == afterupdate_version_beginningv14'
 
       when: previous_version == firmware_version
