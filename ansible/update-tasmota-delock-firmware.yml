@@ -4,7 +4,7 @@
   gather_facts: false
   vars:
     update_url: "http://ota.tasmota.com/tasmota/release-{{update_to}}/tasmota-DE.bin.gz"
-    use_update_set: 14
+    use_update_set: 15
     update_sets:
       0:
         current_version: "7.2.0(basic)"
@@ -51,6 +51,9 @@
       14:
         current_version: "13.4.0(tasmota)"
         update_to: "14.0.0"
+      15:
+        current_version: "14.0.0(release-tasmota)"
+        update_to: "14.1.0"
       # Update von 13.2.0 auf 13.4.0 direkt ging ohne Probleme
       #
       #update_url: "http://ota.tasmota.com/tasmota/release-12.2.0/tasmota-DE.bin.gz"
