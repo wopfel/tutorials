@@ -4,9 +4,10 @@
   gather_facts: false
   vars:
     update_url: "http://ota.tasmota.com/tasmota/release-{{update_to}}/tasmota-DE.bin.gz"
-    afterupdate_version: "{{update_to}}(tasmota)"
+    afterupdate_version: "{{update_to}}("
+    #afterupdate_version: "{{update_to}}(tasmota)"
     # Ab 14.0: 14.0.0(release-tasmota)
-    afterupdate_version_beginningv14: "{{update_to}}(release-tasmota)"
+    #afterupdate_version_beginningv14: "{{update_to}}(release-tasmota)"
     use_update_set: 14
     update_sets:
       0:
@@ -87,7 +88,9 @@
     - name: End the play for a device when already at new version
       ansible.builtin.meta: end_host
       when:
-      - firmware_version == afterupdate_version
+      - "checkstring in firmware_version"
+      vars:
+        checkstring: "{{ update_to }}("
 
     - block:
 
@@ -113,14 +116,19 @@
             url: "http://{{ inventory_hostname }}/cm?cmnd=status%202"
           register: jsonout_afterupdate
           delegate_to: localhost
-          until: (jsonout_afterupdate.failed is false) and (jsonout_afterupdate.status == 200) and (jsonout_afterupdate.json.StatusFWR.Version is defined) and ( (jsonout_afterupdate.json.StatusFWR.Version == afterupdate_version) or (jsonout_afterupdate.json.StatusFWR.Version == afterupdate_version_beginningv14) )
+          until: (jsonout_afterupdate.failed is false) and (jsonout_afterupdate.status == 200) and (jsonout_afterupdate.json.StatusFWR.Version is defined) and (checkstring in jsonout_afterupdate.json.StatusFWR.Version)
           retries: 8
           delay: 10
+          vars:
+            checkstring: "{{ update_to }}("
 
         - debug: var=jsonout_afterupdate
 
         - assert:
             that:
-              - 'jsonout_afterupdate.json.StatusFWR.Version == afterupdate_version  or  jsonout_afterupdate.json.StatusFWR.Version == afterupdate_version_beginningv14'
+              - 'jsonout_afterupdate.json.StatusFWR.Version == checkstringA  or  jsonout_afterupdate.json.StatusFWR.Version == checkstringB'
+          vars:
+            checkstringA: "{{ update_to }}(release-tasmota)"
+            checkstringB: "{{ update_to }}(tasmota)"
 
       when: previous_version == firmware_version
