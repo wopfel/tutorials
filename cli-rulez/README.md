@@ -676,3 +676,19 @@ error: Assert failure
    |   expected: less than int <100>
    |
 ```
+
+
+namei
+-----
+
+Follow a path. Can also be used to check permissions.
+
+```
+$ namei /var/log/salt/minion
+f: /var/log/salt/minion
+ d /
+ d var
+ d log
+ d salt
+    minion - Permission denied
+```
