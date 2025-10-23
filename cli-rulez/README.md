@@ -692,3 +692,24 @@ f: /var/log/salt/minion
  d salt
     minion - Permission denied
 ```
+
+
+oha
+---
+
+HTTP load generator.
+
+Example: `oha http://localhost --output json`
+
+
+mitmdump
+--------
+
+Part of mitmproxy.
+
+```
+mitmdump --mode reverse:http://localhost/
+[14:09:42.871] reverse proxy to http://localhost/ listening at *:8080.
+```
+
+`curl http://localhost:8080/`
