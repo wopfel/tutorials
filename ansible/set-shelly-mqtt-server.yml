@@ -1,0 +1,29 @@
+- hosts: shelly
+  gather_facts: false
+  connection: local
+
+  tasks:
+
+    # Official documentation:
+    # https://shelly-api-docs.shelly.cloud/gen2/0.14/ComponentsAndServices/Mqtt#mqttgetconfig-example
+
+    - name: Get Shelly MQTT config
+      ansible.builtin.uri:
+        method: get
+        url: "http://{{ inventory_hostname }}/rpc/MQTT.GetConfig"
+      delegate_to: localhost
+      register: mqttconfig
+
+    - debug: var=mqttconfig.json
+
+    - ansible.builtin.uri:
+        url: "http://{{ inventory_hostname }}/rpc"
+        method: POST
+        body: '{"id":1,"method":"MQTT.SetConfig","params":{"config":{"enable":true,"server":"mosquitto.lan:1883"}}}'
+        status_code: 200
+      delegate_to: localhost
+      when: not mqttconfig.json.enable
+      register: response
+
+    - debug: var=response
+      when: response is not skipped
