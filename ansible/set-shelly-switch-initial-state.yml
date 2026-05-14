@@ -28,6 +28,7 @@
       when: switchconfig.json.initial_state != "restore_last"
       register: response
       changed_when: true
+      failed_when: response.json.error is defined or response.status != 200
 
     - name: Show response
       debug: var=response
