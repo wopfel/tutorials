@@ -1,0 +1,28 @@
+- hosts: 192.168.211.16,192.168.211.17,192.168.211.18
+  gather_facts: false
+  connection: local
+
+  tasks:
+
+    - name: Get Shelly config
+      ansible.builtin.uri:
+        method: get
+        url: "http://{{ inventory_hostname }}/rpc/Switch.GetConfig?id=0"
+      delegate_to: localhost
+      register: switchconfig
+      changed_when: false
+
+    - debug: var=switchconfig.json.initial_state
+
+    - ansible.builtin.uri:
+        url: "http://{{ inventory_hostname }}/rpc"
+        method: POST
+        body: '{"id":1,"method":"Switch.SetConfig","params":{"id":0,"config":{"initial_state":"restore_last"}}}'
+        status_code: 200
+      delegate_to: localhost
+      when: switchconfig.json.initial_state != "restore_last"
+      register: response
+      changed_when: true
+
+    - debug: var=response
+      when: response is not skipped
