@@ -1,6 +1,15 @@
 - hosts: 192.168.211.16,192.168.211.17,192.168.211.18
   gather_facts: false
   connection: local
+  vars:
+    switch_id: 0
+    set_config:
+      id: 1
+      method: Switch.SetConfig
+      params:
+        id: "{{ switch_id }}"
+        config:
+          initial_state: "restore_last"
 
   tasks:
 
@@ -10,10 +19,13 @@
     - name: Get Shelly config
       ansible.builtin.uri:
         method: get
-        url: "http://{{ inventory_hostname }}/rpc/Switch.GetConfig?id=0"
+        url: "http://{{ inventory_hostname }}/rpc/Switch.GetConfig?id={{ switch_id }}"
       delegate_to: localhost
       register: switchconfig
       changed_when: false
+
+    #- debug: var=set_config
+    #- debug: msg="{{ set_config | to_json }}"
 
     - name: Show current value
       debug: var=switchconfig.json.initial_state
@@ -22,10 +34,10 @@
       ansible.builtin.uri:
         url: "http://{{ inventory_hostname }}/rpc"
         method: POST
-        body: '{"id":1,"method":"Switch.SetConfig","params":{"id":0,"config":{"initial_state":"restore_last"}}}'
+        body: "{{ set_config | to_json }}"
         status_code: 200
       delegate_to: localhost
-      when: switchconfig.json.initial_state != "restore_last"
+      when: switchconfig.json.initial_state != set_config.params.config.initial_state
       register: response
       changed_when: true
       failed_when: response.json.error is defined or response.status != 200
