@@ -4,7 +4,7 @@
   gather_facts: false
   vars:
     update_url: "http://ota.tasmota.com/tasmota/release-{{update_to}}/tasmota-DE.bin.gz"
-    use_update_set: 15
+    use_update_set: 22
     update_sets:
       0:
         current_version: "7.2.0(basic)"
@@ -54,6 +54,27 @@
       15:
         current_version: "14.0.0(release-tasmota)"
         update_to: "14.1.0"
+      16:
+        current_version: "14.1.0(release-tasmota)"
+        update_to: "14.2.0"
+      17:
+        current_version: "14.2.0(release-tasmota)"
+        update_to: "14.3.0"
+      18:
+        current_version: "14.3.0(release-tasmota)"
+        update_to: "14.4.1"
+      19:
+        current_version: "14.4.1(release-tasmota)"
+        update_to: "14.5.0"
+      20:
+        current_version: "14.5.0(release-tasmota)"
+        update_to: "14.6.0"
+      21:
+        current_version: "14.6.0(release-tasmota)"
+        update_to: "15.0.1"
+      22:
+        current_version: "15.0.1(release-tasmota)"
+        update_to: "15.3.0"
       # Update von 13.2.0 auf 13.4.0 direkt ging ohne Probleme
       #
       #update_url: "http://ota.tasmota.com/tasmota/release-12.2.0/tasmota-DE.bin.gz"
