@@ -107,7 +107,7 @@
 
         - name: Pause
           ansible.builtin.pause:
-            seconds: 20
+            seconds: 25
 
         - name: Retrieve JSON
           ansible.builtin.uri:
