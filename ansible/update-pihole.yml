@@ -1,6 +1,11 @@
 - name: Update pihole
   hosts: pihole*.lan
   serial: 1
+  vars:
+    dnstest:
+      - { host: 'archlinux.org',   ip: '209.126.35.79' }
+      - { host: 'flurry.com',      ip: '0.0.0.0' }
+      - { host: 'doubleclick.net', ip: '0.0.0.0' }
 
   tasks:
 
@@ -14,18 +19,20 @@
 
   - when: "'Everything is up to date!' not in checkresult.stdout"
     block:
-      - name: Fetch DNS
-        shell: "dig +short archlinux.org @localhost"
+      - name: Fetch DNS before update
+        shell: "dig +short @localhost {{ item.host }}"
         register: digresult
         changed_when: false
-
-      - name: Fail if ip mismatch
-        fail:
-          msg: "The command ({{ digresult.cmd }}) did not return the correct ip address"
-        when: digresult.stdout != '95.217.163.246'
+        loop: "{{ dnstest }}"
 
       - name: Debug
         debug: msg="{{ digresult }}"
+
+      - name: Fail if ip mismatch
+        fail:
+          msg: "IP mismatch. dig returned '{{ item.stdout }}', expected '{{ item.item.ip }}'"
+        when: "item.stdout != item.item.ip"
+        loop: "{{ digresult.results }}"
 
       - name: Update pihole
         shell: "pihole -up"
@@ -35,12 +42,14 @@
       - name: Debug
         debug: msg="{{ updateresult }}"
 
-      - name: Fetch DNS
-        shell: "dig +short archlinux.org @localhost"
-        register: dig2result
+      - name: Fetch DNS after update
+        shell: "dig +short @localhost {{ item.host }}"
+        register: digresult
         changed_when: false
+        loop: "{{ dnstest }}"
 
       - name: Fail if ip mismatch
-        assert:
-          that:
-            - '"95.217.163.246" == dig2result.stdout'
+        fail:
+          msg: "IP mismatch. dig returned '{{ item.stdout }}', expected '{{ item.item.ip }}'"
+        when: "item.stdout != item.item.ip"
+        loop: "{{ digresult.results }}"
