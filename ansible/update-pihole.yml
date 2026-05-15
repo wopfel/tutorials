@@ -1,0 +1,46 @@
+- name: Update pihole
+  hosts: pihole*.lan
+  serial: 1
+
+  tasks:
+
+  - name: Check for updates
+    shell: "pihole -up --check-only"
+    register: checkresult
+    changed_when: false
+
+  - name: Debug
+    debug: msg="{{ checkresult }}"
+
+  - when: "'Everything is up to date!' not in checkresult.stdout"
+    block:
+      - name: Fetch DNS
+        shell: "dig +short archlinux.org @localhost"
+        register: digresult
+        changed_when: false
+
+      - name: Fail if ip mismatch
+        fail:
+          msg: "The command ({{ digresult.cmd }}) did not return the correct ip address"
+        when: digresult.stdout != '95.217.163.246'
+
+      - name: Debug
+        debug: msg="{{ digresult }}"
+
+      - name: Update pihole
+        shell: "pihole -up"
+        register: updateresult
+        changed_when: "'Update Complete!' in updateresult.stdout"
+
+      - name: Debug
+        debug: msg="{{ updateresult }}"
+
+      - name: Fetch DNS
+        shell: "dig +short archlinux.org @localhost"
+        register: dig2result
+        changed_when: false
+
+      - name: Fail if ip mismatch
+        assert:
+          that:
+            - '"95.217.163.246" == dig2result.stdout'
