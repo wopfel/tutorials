@@ -1,0 +1,26 @@
+- hosts: ssh.lan
+  tasks:
+    - name: Query object
+      delegate_to: localhost
+      uri:
+        url: "https://{{ icinga_host }}:{{ icinga_api_port }}{{ icinga_url }}/{{ item }}"
+        user: "{{ icinga_api_user }}"
+        password: "{{ icinga_api_pass }}"
+        validate_certs: false
+        method: GET
+        headers:
+          Accept: "application/json"
+        status_code: 200
+        force_basic_auth: true
+      with_items: "{{ inventory_hostname }}"
+      #with_items: "{{ ansible_facts['fqdn'] }}"
+      vars:
+        icinga_host: icinga.lan
+        icinga_api_port: 5665
+        icinga_url: /v1/objects/hosts
+        icinga_api_user: ansible-api-user
+        icinga_api_pass: PASSWORD
+      register: uricall
+
+    - debug:
+        msg: "{{ uricall }}"
